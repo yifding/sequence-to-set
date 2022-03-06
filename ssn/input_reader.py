@@ -1,4 +1,5 @@
 import json
+import jsonlines
 from abc import abstractmethod, ABC
 from collections import OrderedDict
 from logging import Logger
@@ -185,7 +186,9 @@ class JsonInputReader(BaseInputReader):
                 self.word2inx[k] = len(self.word2inx)
 
     def _parse_dataset(self, dataset_path, dataset, dataset_label):
-        documents = json.load(open(dataset_path))
+        with jsonlines.open(dataset_path) as reader:
+            documents = [line for line in reader]
+        # documents = json.load(open(dataset_path))
         if dataset_label == "train" and self.build_vocab:
             self._build_vocab(documents)
         for document in tqdm(documents, desc="Parse dataset '%s'" % dataset.label):

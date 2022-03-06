@@ -1,0 +1,13 @@
+__pycache__
+*.json
+*.jsonl
+*.npy
+*.pt
+.DS_Store
+*.train
+*.dev
+*.test
+RUN_FILES
+log
+main
+RUN_FILES/33att/glove.6B.100d.txt
