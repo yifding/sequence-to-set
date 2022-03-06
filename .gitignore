@@ -7,7 +7,8 @@ __pycache__
 *.train
 *.dev
 *.test
-RUN_FILES
+# RUN_FILES
 log
 main
-RUN_FILES/33att/glove.6B.100d.txt
+RUN_FILES/prepare_data/glove.6B.100d.txt
+*.log
