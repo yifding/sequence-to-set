@@ -12,3 +12,5 @@ log
 main
 RUN_FILES/prepare_data/glove.6B.100d.txt
 *.log
+events.out.tfevents*
+*.csv
