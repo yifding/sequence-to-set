@@ -111,8 +111,11 @@ class Evaluator:
 
         # store as json
         label, epoch = self._dataset_label, self._epoch
-        with open(self._predictions_path % (label, epoch), 'w') as predictions_file:
+        # **YD** only stores prediction file
+        with open(self._predictions_path, 'w') as predictions_file:
             json.dump(predictions, predictions_file)
+        # with open(self._predictions_path % (label, epoch), 'w') as predictions_file:
+        #     json.dump(predictions, predictions_file)
 
     def store_examples(self):
         entity_examples = []
@@ -395,11 +398,13 @@ class Evaluator:
         return text
 
     def _store_examples(self, examples: List[Dict], file_path: str, template: str):
-        template_path = os.path.join(SCRIPT_PATH, 'templates', template)
-
-        # read template
-        with open(os.path.join(SCRIPT_PATH, template_path)) as f:
-            template = jinja2.Template(f.read())
-
-        # write to disc
-        template.stream(examples=examples).dump(file_path)
+        # **YD** ignore all the store_examples
+        pass
+        # template_path = os.path.join(SCRIPT_PATH, 'templates', template)
+        #
+        # # read template
+        # with open(os.path.join(SCRIPT_PATH, template_path)) as f:
+        #     template = jinja2.Template(f.read())
+        #
+        # # write to disc
+        # template.stream(examples=examples).dump(file_path)
